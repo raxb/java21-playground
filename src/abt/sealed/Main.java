@@ -12,7 +12,7 @@ public class Main {
         Shape shape3 = new TwoDRhombus();
         shape3.draw();
 
-        if(shape instanceof Rectangle r){
+        if(shape instanceof SemiCircle r){
             /* https://openjdk.org/jeps/394 */
             r.draw();
         }
