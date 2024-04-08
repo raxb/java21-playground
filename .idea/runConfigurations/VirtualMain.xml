@@ -2,7 +2,7 @@
   <configuration default="false" name="VirtualMain" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="abt.virtualthreads.VirtualMain" />
     <module name="java21-playground" />
-    <option name="VM_PARAMETERS" value="-XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc" />
+    <option name="VM_PARAMETERS" value="-XX:+FlightRecorder -XX:StartFlightRecording:filename=recording.jfr,dumponexit=true,settings=default.jfc" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="abt.virtualthreads.*" />
