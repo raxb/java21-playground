@@ -2,6 +2,8 @@ package abt.switch_expression;
 
 import abt.sealed.*;
 
+import static abt.switch_expression.Coin.TAILS;
+
 /*
 https://openjdk.org/jeps/441
  */
@@ -17,13 +19,17 @@ public class SwitchExpMain {
         switchInstances(new SemiCircleImpl2());
         switchInstances(new TwoDRhombus());
         switchInstances(new SemiCircle());
+
+        switchEnumSealed(Coin.HEADS);
+        switchEnumSealed(Coin.TAILS);
+
     }
 
     private static void switchExp(String[] args) {
         var day = switch (DAYS.valueOf(args[0])){
             case MONDAY, WEDNESDAY, THURSDAY -> "Work Maniac";
-            case TUESDAY -> "Planning";
-            case DAYS d when d.equals(DAYS.FRIDAY) -> {
+            case DAYS.TUESDAY -> "Planning";
+            case DAYS d when d == DAYS.FRIDAY -> {
                 if(args.length>1 && "meet".equalsIgnoreCase(args[1])) {
                     yield "Grooming on "+d.name();
                 } else
@@ -39,6 +45,7 @@ public class SwitchExpMain {
 
     private static void switchInstances(Shape shape){
         switch (shape){
+            case null -> System.out.println("Invalid shape");
             case Square s -> s.draw();
             case Rectangle r -> r.draw();
             case Rhombus rhombus-> {
@@ -53,7 +60,14 @@ public class SwitchExpMain {
                 System.out.println("Inside Circle case");
                 circle.draw();
             }
-        };
+        }
 
+    }
+
+    private static void switchEnumSealed(Currency currency){
+        switch (currency){
+            case Coin.HEADS -> System.out.println("HEADS");
+            case null, default -> System.out.println("null currency or TAILS");
+        }
     }
 }
